@@ -180,7 +180,7 @@ $(document).ready(function () {
     // conversaciones : 216x1458
 
     // ESTABLECER UN TAMAÑO DELETRA FIJO CON PORCENTAJES RESPECTO AL TAMAÑO DE LA PANTALLA
-    alert((31.7 * pantallaAncho * 100) / resolucionAncho)
+    
     $(document.body).attr("style", "font-size: " + ((31.7 * pantallaAncho * 100) / resolucionAncho) + "px;color: black;")
     
     $(document.body).append('<div id="principal" style="' + "position: fixed; background-color: transparent; top: " + 0 + "px " + "; left: "+ 0 + "px " +"; width: "+ pantallaAncho * 100 +"px; height: "+pantallaAlto*100+"px;background-repeat: no-repeat; background-size:"+pantallaAncho*100+"px "+pantallaAlto*100+"px;" + '"></div>');
