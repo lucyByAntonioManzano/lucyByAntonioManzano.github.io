@@ -1,0 +1,20 @@
+/* 
+body {
+    background-image: url("./imagenes/imagen1.jpg");
+}
+
+#piter {
+    position: fixed;
+    background-color: aqua;
+
+    bottom: ;
+    right: 0,5;
+    width: 300px;
+    height: 150px;
+} */
+
+
+.textos {
+    /* font-size: small; */
+    color: black;
+}
