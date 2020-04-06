@@ -3,6 +3,10 @@ $(document).ready(function () {
     resolucionAlto = 819;
     resolucionAncho = 1458;
 
+//  Otras variables
+    pilaReloj =  false;
+    mangueraRegar = false;
+
     // Limitar pantalla para que la resolución no cambie independientemente de las dimensiones de la ventana
     if ((resolucionAlto/resolucionAncho) >= window.innerHeight/window.innerWidth) {
         var pantallaAncho = (resolucionAncho/ (resolucionAlto / window.innerHeight)) / 100;
@@ -14,7 +18,7 @@ $(document).ready(function () {
 
     var pilaInstrucciones = [
         // casa de fondo + lucy -------------------------   Imagen    ---------- 0
-        function () {
+        function () { 
             $("#principal").attr("style", "position: fixed; background-color: transparent; top: " + 0 + "px " + "; left: "+ 0 + "px " +"; width: "+ pantallaAncho * 100 +
             "px; height: "+pantallaAlto*100+"px;background-repeat: no-repeat; background-size:"+pantallaAncho*100+"px "+pantallaAlto*100+
             "px;background-image: url('./imagenes/lucy1.png'), url('./imagenes/casa1.jpg') ;")
@@ -35,6 +39,20 @@ $(document).ready(function () {
                 $(".charco").remove();
                 $(".canalon").remove();
                 $(".puerta").remove();
+                $(".rejilla").remove();
+                $(".ventanaIzq").remove();
+                $(".felpudo").remove();
+                $(".buzon").remove();
+                $(".reloj").remove();
+                $(".macetamadera").remove();
+                $(".cesped").remove();
+                $(".mesa").remove();
+                $(".tejado").remove();
+                $(".manguera").remove();
+                $(".ventanaDcha").remove();
+                
+                
+                // $(".").remove();
             }
 
             // El canalón se divide en dos secciones pero solo hace falta añadirle la funcionalidad a la clase para que ambos divs la tengan
@@ -78,10 +96,112 @@ $(document).ready(function () {
             $(".felpudo").click(function () {
                 pilaInstrucciones[0]();
                 borradoLocal();
-                establecerComentario(5);
+                establecerComentario(10);
+            });
+
+            establecerDiv((272/resolucionAlto)*100,(629/resolucionAncho)*100,(79/resolucionAlto)*100,(54/resolucionAncho)*100,"buzon");
+            $(".buzon").click(function () {
+                pilaInstrucciones[0]();
+                borradoLocal();
+                establecerComentario(12);
+            });
+
+            establecerDiv((364/resolucionAlto)*100,(749/resolucionAncho)*100,(55/resolucionAlto)*100,(50/resolucionAncho)*100,"reloj");
+            $(".reloj").click(function () {
+                pilaInstrucciones[0]();
+                borradoLocal();
+                establecerComentario(15);
+            });
+
+            establecerDiv((429/resolucionAlto)*100,(958/resolucionAncho)*100,(59/resolucionAlto)*100,(40/resolucionAncho)*100,"macetamadera");
+            $(".macetamadera").click(function () {
+                pilaInstrucciones[0]();
+                borradoLocal();
+                establecerComentario(20);
+            });
+
+            establecerDiv((613/resolucionAlto)*100,(1137/resolucionAncho)*100,(201/resolucionAlto)*100,(231/resolucionAncho)*100,"cesped");
+            $(".cesped").click(function () {
+                pilaInstrucciones[0]();
+                borradoLocal();
+                establecerComentario(22);
+            });
+
+            establecerDiv((521/resolucionAlto)*100,(315/resolucionAncho)*100,(56/resolucionAlto)*100,(206/resolucionAncho)*100,"mesa");
+            $(".mesa").click(function () {
+                pilaInstrucciones[0]();
+                borradoLocal();
+                establecerComentario(23);
+            });
+
+            establecerDiv((68/resolucionAlto)*100,(257/resolucionAncho)*100,(138/resolucionAlto)*100,(954/resolucionAncho)*100,"tejado");
+            $(".tejado").click(function () {
+                pilaInstrucciones[0]();
+                borradoLocal();
+                establecerComentario(24);
+            });
+
+            establecerDiv((318/resolucionAlto)*100,(309/resolucionAncho)*100,(92/resolucionAlto)*100,(22/resolucionAncho)*100,"manguera");
+            $(".manguera").click(function () {
+                pilaInstrucciones[0]();
+                borradoLocal();
+                establecerComentario(25);
+            });
+
+            establecerDiv((259/resolucionAlto)*100,(833/resolucionAncho)*100,(182/resolucionAlto)*100,(261/resolucionAncho)*100,"ventanaDcha");
+            $(".ventanaDcha").click(function () {
+                pilaInstrucciones[0]();
+                borradoLocal();
+                establecerComentario(30);
             });
         },
 
+        // pregunta reloj --------------------------------   Divs     ---------- 3
+        function () {
+            if(pilaReloj){
+                pilaInstrucciones[0]();
+                new establecerComentario(19);
+            } else {
+                new establecerComentario(16);
+                pilaInstrucciones[4]();
+                establecerDiv((463/resolucionAlto)*100,(1152/resolucionAncho)*100,(70/resolucionAlto)*100,(243/resolucionAncho)*100,"si");
+                $(".si").click(function () {
+                    pilaReloj =  true;
+                    pilaInstrucciones[0]();
+                    new establecerComentario(18);
+                });
+            }
+        },
+
+        // casa de fondo + lucy + pregunta ---------------   Imagen    ---------- 4
+        function () {
+            $("#principal").attr("style", "position: fixed; background-color: transparent; top: " + 0 + "px " + "; left: "+ 0 + "px " +"; width: "+ pantallaAncho * 100 +
+            "px; height: "+pantallaAlto*100+"px;background-repeat: no-repeat; background-size:"+pantallaAncho*100+"px "+pantallaAlto*100+
+            "px;background-image: url('./imagenes/pregunta.png'), url('./imagenes/lucy1.png'), url('./imagenes/casa1.jpg') ;")
+        },
+
+        // pregunta regar --------------------------------   Divs      ---------- 5
+        function () {
+            if(mangueraRegar){
+                new establecerComentario(26);
+            } else {
+                new establecerComentario(27);
+                pilaInstrucciones[4]();
+                establecerDiv((463/resolucionAlto)*100,(1152/resolucionAncho)*100,(70/resolucionAlto)*100,(243/resolucionAncho)*100,"si");
+                $(".si").click(function () {
+                    mangueraRegar =  true;
+                    pilaInstrucciones[0]();
+                    new establecerComentario(29);
+                });
+            }
+        },
+
+        // eliminar div pregunta -------------------------   Divs      ---------- 6
+        function () {
+            $(".si").remove();
+        },
+
+        
     ]
 
     var establecerDiv = (function () {
@@ -122,9 +242,31 @@ $(document).ready(function () {
             ["p7", "De todas formas ahí no voy a encontrar la llave, a nadie se le ocurriría dejarla en el desagüe.", 3],
             ["p8", "Llamaría a la puerta pero papá estará ensimismado y no me escuchará, como siempre.", "instr", [1, 2]],
             ["p9", "La ventana está cerrada desde dentro. Desde aquí se ve el salón pero no se ve a nadie.", "instr", [1, 2]],
-            ["p9", "La ventana está cerrada desde dentro. Desde aquí se ve el salón pero no hay nadie.", "instr", [1, 2]],
+            ["p10", 'En el felpudo se puede leer "Bienvenido", supongo que la llave puede estar debajo.', 11],
+            ["p11", "No, parece que aquí no está.", "instr", [1, 2]], 
+            ["p12", "No tengo la llave del buzón pero la llave de casa no está ahí, recuerdo haber mirado esta mañana el correo, tampoco había.", 13],
+            ["p13", "Es triste no recibir correo pero supongo que es normal, no tengo más familia que mi padre y tampoco suelo conocer gente.", 14], 
+            ["p14", "Vivir en el campo tiene sus pros y sus contras, supongo que es lo mejor para mi.", "instr", [1, 2]],
+            ["p15", "El reloj que puso mi padre en la puerta para que volviese a entrar en casa antes de las 9.", "instr", [3]], 
+            ["p16", "¿Le quito la pila? Quizá sea util.", 17], 
+            ["p17", "He dejado la pila y el reloj en su sitio.", "instr", [1, 2, 6]], 
+            ["p18", "He cogido la pila del reloj y lo he dejado en su sitio.", "instr", [1, 2]],
+            ["p19", "Ya he cogido la pila del reloj.", "instr", [1, 2]],
+            ["p20", "Una maceta, parece de madera.", 21], 
+            ["p21", "No hay nada dentro.", "instr", [1, 2]], 
+            ["p22", "Dudo que esté en el césped. Me gusta pasar el rato ahí tendida, mi padre lo sabe. No dejaria algo por aqui tirado.", "instr", [1, 2]], 
+            ["p23", "Encima de la mesa solo hay una maceta y un cenicero.", "instr", [1, 2]], 
+            ["p24", "En el tejado... No podría cogerlas, tampoco puedo ver si están desde aqui. Será mejor que busque en otro lugar.", "instr", [1, 2]], 
+            ["p25", "La manguera, parece que papá la ha usado hace poco.", "instr", [5]], 
+            ["p26", "Ya sé que puedo regar pero sigo sin saber donde está la llave.", "instr", [1, 2]], 
+            ["p27", "¿Uso la manguera?.", 28], 
+            ["p28", "La he dejado como estaba para no mojarme.", "instr", [1, 2, 6]], 
+            ["p29", "Si fuese útil la podría usar, es buena idea.", "instr", [1, 2]], 
+            ["p30", "Es sólo una ventana, las cortinas están cerradas.", 31],
+            ["p31", "No se puede apreciar el interior desde fuera.", "instr", [1, 2]], 
 
         ]
+
         var porcent = 26.3736 * pantallaAlto;
 
         function colorearDiv(comentario) {
