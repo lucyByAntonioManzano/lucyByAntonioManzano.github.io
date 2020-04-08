@@ -6,6 +6,8 @@ $(document).ready(function () {
 //  Otras variables
     pilaReloj =  false;
     mangueraRegar = false;
+    tejadoRegar = false;
+    llave = false;
 
     // Limitar pantalla para que la resolución no cambie independientemente de las dimensiones de la ventana
     if ((resolucionAlto/resolucionAncho) >= window.innerHeight/window.innerWidth) {
@@ -202,6 +204,48 @@ $(document).ready(function () {
         },
 
         
+        // pregunta regar --------------------------------   Divs      ---------- 7
+        function () {
+            if(!mangueraRegar){
+                new establecerComentario(32);
+            } else if (tejadoRegar) {
+                if(llave) {
+                    new establecerComentario(37);
+                } else {
+                    new establecerComentario(38);
+                    pilaInstrucciones[4]();
+                    establecerDiv((463/resolucionAlto)*100,(1152/resolucionAncho)*100,(70/resolucionAlto)*100,(243/resolucionAncho)*100,"si");
+                    $(".si").click(function () {
+                        llave =  true;
+                        pilaInstrucciones[0]();
+                        new establecerComentario(40);
+                    });
+                }
+            } else {
+                new establecerComentario(33);
+                pilaInstrucciones[4]();
+                establecerDiv((463/resolucionAlto)*100,(1152/resolucionAncho)*100,(70/resolucionAlto)*100,(243/resolucionAncho)*100,"si");
+                $(".si").click(function () {
+                    tejadoRegar =  true;
+                    pilaInstrucciones[0]();
+                    new establecerComentario(35);
+                });
+            }
+        },
+
+        // pregunta llave --------------------------------   Divs      ---------- 8
+        function () {
+            if(llave){
+                new establecerComentario(41);
+            } else {
+                new establecerComentario(42);
+            }
+        },
+        
+        // abriendo puerta -------------------------------   Divs      ---------- 9
+        function () {
+            $(document.body).append('<div "'+ '" style="position: fixed; background-color: black; top: 0px; left: 0px; width:' + pantallaAncho * 100 + "px; height: " + pantallaAlto * 100 + "px;" + '">');
+        }
     ]
 
     var establecerDiv = (function () {
@@ -238,7 +282,7 @@ $(document).ready(function () {
             ["p3", "Debería decirle lo del charco cuando entre, quizá esté obstruido.", "instr", [1, 2]],
             ["p4", "El canalón, aunque la llave estuviese allí no podría alcanzarla...", "instr", [1, 2]],
             ["p5", "Una rejilla de ventilación, parece que la llave no está aquí.", "instr", [1, 2]], 
-            ["p6", "Sin llave no sirve de nada intentar abrirla.", 8],
+            ["p6", "La puerta...", "instr", [8]],
             ["p7", "De todas formas ahí no voy a encontrar la llave, a nadie se le ocurriría dejarla en el desagüe.", 3],
             ["p8", "Llamaría a la puerta pero papá estará ensimismado y no me escuchará, como siempre.", "instr", [1, 2]],
             ["p9", "La ventana está cerrada desde dentro. Desde aquí se ve el salón pero no se ve a nadie.", "instr", [1, 2]],
@@ -256,7 +300,7 @@ $(document).ready(function () {
             ["p21", "No hay nada dentro.", "instr", [1, 2]], 
             ["p22", "Dudo que esté en el césped. Me gusta pasar el rato ahí tendida, mi padre lo sabe. No dejaria algo por aqui tirado.", "instr", [1, 2]], 
             ["p23", "Encima de la mesa solo hay una maceta y un cenicero.", "instr", [1, 2]], 
-            ["p24", "En el tejado... No podría cogerlas, tampoco puedo ver si están desde aqui. Será mejor que busque en otro lugar.", "instr", [1, 2]], 
+            ["p24", "En el tejado... No podría cogerlas, tampoco puedo ver si están desde aqui.", "instr", [7]], 
             ["p25", "La manguera, parece que papá la ha usado hace poco.", "instr", [5]], 
             ["p26", "Ya sé que puedo regar pero sigo sin saber donde está la llave.", "instr", [1, 2]], 
             ["p27", "¿Uso la manguera?.", 28], 
@@ -264,7 +308,17 @@ $(document).ready(function () {
             ["p29", "Si fuese útil la podría usar, es buena idea.", "instr", [1, 2]], 
             ["p30", "Es sólo una ventana, las cortinas están cerradas.", 31],
             ["p31", "No se puede apreciar el interior desde fuera.", "instr", [1, 2]], 
-
+            ["p32", "Será mejor que busque en otro lugar.","instr", [1, 2]],
+            ["p33", "¿Debería usar la manguera?.", 34],
+            ["p34", "Supongo que no es una gran idea.","instr", [1, 2]],
+            ["p35", "He echado agua, parece que hay un tapón porque el agua sale poco a poco.", 36],
+            ["p36", "Parece atascado, a lo mejor puedo hacer algo para quitar ese atasco.","instr", [1, 2]],
+            ["p37", "Ya he cogido la llave lanzando aquí la pila.", "instr", [1, 2]],
+            ["p38", "¿Debería lanzar la pila?.", 39],
+            ["p39", "Mejor no lo hago.","instr", [1, 2]],
+            ["p40", "Al lanzar la pila ha caido del canalón un montón de hojas y una bolsa con la llave de la casa. No se porqué estaba allí pero ya la tengo, es lo importante.","instr", [1, 2]],
+            ["p41", "He abierto la puerta con la llave.", "instr", [9]],
+            ["p42", "Es inútil abrirla si no tengo llave.","instr", [1, 2]],
         ]
 
         var porcent = 26.3736 * pantallaAlto;
