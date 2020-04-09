@@ -170,6 +170,7 @@ $(document).ready(function () {
                 $(".si").click(function () {
                     pilaReloj =  true;
                     pilaInstrucciones[0]();
+                    $(".p16").remove();
                     new establecerComentario(18);
                 });
             }
@@ -193,6 +194,7 @@ $(document).ready(function () {
                 $(".si").click(function () {
                     mangueraRegar =  true;
                     pilaInstrucciones[0]();
+                    $(".p27").remove();
                     new establecerComentario(29);
                 });
             }
@@ -201,6 +203,7 @@ $(document).ready(function () {
         // eliminar div pregunta -------------------------   Divs      ---------- 6
         function () {
             $(".si").remove();
+            pilaInstrucciones[0]();
         },
 
         
@@ -209,17 +212,21 @@ $(document).ready(function () {
             if(!mangueraRegar){
                 new establecerComentario(32);
             } else if (tejadoRegar) {
-                if(llave) {
-                    new establecerComentario(37);
+                if(pilaReloj) {
+                    if(llave) {
+                        new establecerComentario(37);
+                    } else {
+                        new establecerComentario(38);
+                        pilaInstrucciones[4]();
+                        establecerDiv((463/resolucionAlto)*100,(1152/resolucionAncho)*100,(70/resolucionAlto)*100,(243/resolucionAncho)*100,"si");
+                        $(".si").click(function () {
+                            llave =  true;
+                            pilaInstrucciones[0]();
+                            new establecerComentario(40);
+                        });
+                    }
                 } else {
-                    new establecerComentario(38);
-                    pilaInstrucciones[4]();
-                    establecerDiv((463/resolucionAlto)*100,(1152/resolucionAncho)*100,(70/resolucionAlto)*100,(243/resolucionAncho)*100,"si");
-                    $(".si").click(function () {
-                        llave =  true;
-                        pilaInstrucciones[0]();
-                        new establecerComentario(40);
-                    });
+                    new establecerComentario(43);
                 }
             } else {
                 new establecerComentario(33);
@@ -245,6 +252,26 @@ $(document).ready(function () {
         // abriendo puerta -------------------------------   Divs      ---------- 9
         function () {
             $(document.body).append('<div "'+ '" style="position: fixed; background-color: black; top: 0px; left: 0px; width:' + pantallaAncho * 100 + "px; height: " + pantallaAlto * 100 + "px;" + '">');
+        },
+
+        // ---------------------------------------10
+        function () {
+            new establecerComentario(39);
+        },
+
+        // ---------------------------------------11
+        function () {
+            new establecerComentario(17);
+        },
+
+        // ---------------------------------------12
+        function () {
+            new establecerComentario(28);
+        },
+
+        // ---------------------------------------13
+        function () {
+            new establecerComentario(34);
         }
     ]
 
@@ -292,8 +319,8 @@ $(document).ready(function () {
             ["p13", "Es triste no recibir correo pero supongo que es normal, no tengo más familia que mi padre y tampoco suelo conocer gente.", 14], 
             ["p14", "Vivir en el campo tiene sus pros y sus contras, supongo que es lo mejor para mi.", "instr", [1, 2]],
             ["p15", "El reloj que puso mi padre en la puerta para que volviese a entrar en casa antes de las 9.", "instr", [3]], 
-            ["p16", "¿Le quito la pila? Quizá sea util.", 17], 
-            ["p17", "He dejado la pila y el reloj en su sitio.", "instr", [1, 2, 6]], 
+            ["p16", "¿Le quito la pila? Quizá sea util.", "instr", [6, 11]], 
+            ["p17", "He dejado la pila y el reloj en su sitio.", "instr", [1, 2]], 
             ["p18", "He cogido la pila del reloj y lo he dejado en su sitio.", "instr", [1, 2]],
             ["p19", "Ya he cogido la pila del reloj.", "instr", [1, 2]],
             ["p20", "Una maceta, parece de madera.", 21], 
@@ -303,22 +330,23 @@ $(document).ready(function () {
             ["p24", "En el tejado... No podría cogerlas, tampoco puedo ver si están desde aqui.", "instr", [7]], 
             ["p25", "La manguera, parece que papá la ha usado hace poco.", "instr", [5]], 
             ["p26", "Ya sé que puedo regar pero sigo sin saber donde está la llave.", "instr", [1, 2]], 
-            ["p27", "¿Uso la manguera?.", 28], 
-            ["p28", "La he dejado como estaba para no mojarme.", "instr", [1, 2, 6]], 
+            ["p27", "¿Uso la manguera?.", "instr", [6, 12]], 
+            ["p28", "La he dejado como estaba para no mojarme.", "instr", [1, 2]], 
             ["p29", "Si fuese útil la podría usar, es buena idea.", "instr", [1, 2]], 
             ["p30", "Es sólo una ventana, las cortinas están cerradas.", 31],
             ["p31", "No se puede apreciar el interior desde fuera.", "instr", [1, 2]], 
             ["p32", "Será mejor que busque en otro lugar.","instr", [1, 2]],
-            ["p33", "¿Debería usar la manguera?.", 34],
+            ["p33", "¿Debería usar la manguera?.", "instr", [6, 13]],
             ["p34", "Supongo que no es una gran idea.","instr", [1, 2]],
             ["p35", "He echado agua, parece que hay un tapón porque el agua sale poco a poco.", 36],
             ["p36", "Parece atascado, a lo mejor puedo hacer algo para quitar ese atasco.","instr", [1, 2]],
             ["p37", "Ya he cogido la llave lanzando aquí la pila.", "instr", [1, 2]],
-            ["p38", "¿Debería lanzar la pila?.", 39],
+            ["p38", "¿Debería lanzar la pila?.", "instr", [6, 10]],
             ["p39", "Mejor no lo hago.","instr", [1, 2]],
             ["p40", "Al lanzar la pila ha caido del canalón un montón de hojas y una bolsa con la llave de la casa. No se porqué estaba allí pero ya la tengo, es lo importante.","instr", [1, 2]],
             ["p41", "He abierto la puerta con la llave.", "instr", [9]],
             ["p42", "Es inútil abrirla si no tengo llave.","instr", [1, 2]],
+            ["p43", "Ya he mojado el techo pero el desagüe sigue taponado.","instr", [1, 2]]
         ]
 
         var porcent = 26.3736 * pantallaAlto;
