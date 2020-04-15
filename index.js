@@ -21,6 +21,8 @@ $(document).ready(function () {
     var pilaInstrucciones = [
         // casa de fondo + lucy -------------------------   Imagen    ---------- 0
         function () { 
+            audio.play();
+            new establecerComentario(0);
             $("#principal").attr("style", "position: fixed; background-color: transparent; top: " + 0 + "px " + "; left: "+ 0 + "px " +"; width: "+ pantallaAncho * 100 +
             "px; height: "+pantallaAlto*100+"px;background-repeat: no-repeat; background-size:"+pantallaAncho*100+"px "+pantallaAlto*100+
             "px;background-image: url('./imagenes/lucy1.png'), url('./imagenes/casa1.jpg') ;")
@@ -251,6 +253,7 @@ $(document).ready(function () {
         
         // abriendo puerta -------------------------------   Divs      ---------- 9
         function () {
+            audio.pause();
             $(document.body).append('<div "'+ '" style="position: fixed; background-color: black; top: 0px; left: 0px; width:' + pantallaAncho * 100 + "px; height: " + pantallaAlto * 100 + "px;" + '">');
         },
 
@@ -346,7 +349,8 @@ $(document).ready(function () {
             ["p40", "Al lanzar la pila ha caido del canalón un montón de hojas y una bolsa con la llave de la casa. No se porqué estaba allí pero ya la tengo, es lo importante.","instr", [1, 2]],
             ["p41", "He abierto la puerta con la llave.", "instr", [9]],
             ["p42", "Es inútil abrirla si no tengo llave.","instr", [1, 2]],
-            ["p43", "Ya he mojado el techo pero el desagüe sigue taponado.","instr", [1, 2]]
+            ["p43", "Ya he mojado el techo pero el desagüe sigue taponado.","instr", [1, 2]],
+            ["p44", "Haz click para empezar...", "instr", [0]]
         ]
 
         var porcent = 26.3736 * pantallaAlto;
@@ -384,9 +388,8 @@ $(document).ready(function () {
         return crearDiv;
     }());
 
-    // $(document.body).append('<audio id="audio"><source type="audio/mpeg" src="./sonido/cadaGolpe.mp3"></audio>');                          background-repeat: no-repeat; background-size: 300px 100px;
-    // var audio  = document.getElementById("audio");
-    // audio.play();
+    $(document.body).append('<audio id="audio"><source type="audio/mpeg" src="./sonido/Artificial.Music_Herbal_Tea_Lo-fi.mp3"></audio>');
+    var audio  = document.getElementById("audio");
     
     /*
         $("#piter").click(function () {
@@ -408,7 +411,7 @@ $(document).ready(function () {
     $(document.body).attr("style", "font-size: " + ((31.7 * pantallaAncho * 100) / resolucionAncho) + "px;color: black;")
     
     $(document.body).append('<div id="principal" style="' + "position: fixed; background-color: transparent; top: " + 0 + "px " + "; left: "+ 0 + "px " +"; width: "+ pantallaAncho * 100 +"px; height: "+pantallaAlto*100+"px;background-repeat: no-repeat; background-size:"+pantallaAncho*100+"px "+pantallaAlto*100+"px;" + '"></div>');
-    pilaInstrucciones[0]();
-    new establecerComentario(0);
+    // pilaInstrucciones[0]();
+    new establecerComentario(44);
 
 });
