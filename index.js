@@ -388,7 +388,7 @@ $(document).ready(function () {
         return crearDiv;
     }());
 
-    $(document.body).append('<audio id="audio"><source type="audio/mpeg" src="./sonido/Artificial.Music_Herbal_Tea_Lo-fi.mp3"></audio>');
+    $(document.body).append('<audio id="audio" loop><source type="audio/mpeg" src="./sonido/Artificial.Music_Herbal_Tea_Lo-fi.mp3"></audio>');
     var audio  = document.getElementById("audio");
     
     /*
